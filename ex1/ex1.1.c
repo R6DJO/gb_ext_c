@@ -27,9 +27,12 @@ int main()
     struct pack_array pa = {0, 0, 0};
     struct pack_array *ps = &pa;
     array2struct(ar, ps);
-    printf("count 1:%"PRIu32" count 0:%"PRIu32"\n", ps->count1, ps->count0);
+    printf("count 1:%" PRIu32 " count 0:%" PRIu32 "\n", ps->count1, ps->count0);
     printf("ar: 0x%08x\n", ps->array);
-    printf("ar: "BYTE_TO_BIN_PATTERN " " BYTE_TO_BIN_PATTERN " " BYTE_TO_BIN_PATTERN " " BYTE_TO_BIN_PATTERN "\n", BYTE_TO_BIN((ps->array >> 24) & 255), BYTE_TO_BIN((ps->array >> 16) & 255), BYTE_TO_BIN((ps->array >> 8) & 255), BYTE_TO_BIN(ps->array & 255));
+    printf("ar: " BYTE_TO_BIN_PATTERN " " BYTE_TO_BIN_PATTERN
+           " " BYTE_TO_BIN_PATTERN " " BYTE_TO_BIN_PATTERN "\n",
+           BYTE_TO_BIN((ps->array >> 24) & 255), BYTE_TO_BIN((ps->array >> 16) & 255),
+           BYTE_TO_BIN((ps->array >> 8) & 255), BYTE_TO_BIN(ps->array & 255));
     return 0;
 }
 

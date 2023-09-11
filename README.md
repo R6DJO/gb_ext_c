@@ -7,9 +7,9 @@
 вида
 
 struct pack_array {
-uint32_t array; // массив из 0 и 1
-uint32_t count0 : 8; // количество 0 в массиве
-uint32_t count1 : 8; // количество 1 в массиве
+    uint32_t array; // массив из 0 и 1
+    uint32_t count0 : 8; // количество 0 в массиве
+    uint32_t count1 : 8; // количество 1 в массиве
 }
 void array2struct(int ar[], struct pack_array *ps);
 
@@ -20,15 +20,16 @@ void array2struct(int ar[], struct pack_array *ps);
 float, она возвращает порядок в виде десятичного целого числа.
 int extractExp(float f).
 
-int extractExp(float f) {
-union {
-float f;
-struct {
-uint32_t mantissa : 23;
-uint32_t exp : 8;
-uint32_t s : 1;
-} field;
-} fl;
-fl.f = f;
-return fl.field.exp;
+int extractExp(float f) 
+{
+    union {
+        float f;
+        struct {
+            uint32_t mantissa : 23;
+            uint32_t exp : 8;
+            uint32_t s : 1;
+        } field;
+    } fl;
+    fl.f = f;
+    return fl.field.exp;
 }
